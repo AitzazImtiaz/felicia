@@ -42,7 +42,7 @@ pairs = [
     ],
 ]
 
-def felicia_chatbot():
+def main():
     print("Hello! I'm Felicia, a female AI chatbot. How can I assist you today?")
     chat = Chat(pairs, reflections)
     while True:
@@ -50,6 +50,3 @@ def felicia_chatbot():
         response = chat.respond(user_input)
         print("Felicia >>", response)
         os.system(f"termux-tts-speak '{response}'")
-
-if __name__ == "__main__":
-    felicia_chatbot()

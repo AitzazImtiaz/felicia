@@ -1,7 +1,7 @@
 import os
 import subprocess
 import nltk
-import wikipedia  # For connecting to Wikipedia
+import wikipedia
 
 nltk.download("punkt")  # Download NLTK data (if not already downloaded)
 
@@ -34,7 +34,7 @@ pairs = [
     ],
     [
         r"(.*) (connect|search) to Wikipedia (.*)",
-        [wikipedia.summary("%3"),]
+        [lambda matches: wikipedia.summary(matches[2]) if wikipedia.search(matches[2]) else "No results found.",]
     ],
     [
         r"quit",

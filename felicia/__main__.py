@@ -4,8 +4,7 @@ import subprocess
 
 def main():
   while True:
-    inp = subprocess.getoutput("termux-speech-to-text")
-    print("You >> "+inp)
+    inp = input("You >> ")
     out = cleverbotfreeapi.cleverbot(inp, session="Deftera")
     print("Felicia >>"+out)
     fout = f"termux-tts-speak '{out}'"

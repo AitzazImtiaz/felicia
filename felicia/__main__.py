@@ -19,7 +19,7 @@ def who_is(session, query):
 def main():
   while True:
     inp = input("You >> ")
-    out = Chat("examples/Example.template").converse(inp)
+    out = Chat("").converse(inp)
     print("Felicia >>"+out)
     fout = f"termux-tts-speak '{out}'"
     os.system(fout)

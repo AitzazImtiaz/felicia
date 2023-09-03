@@ -34,13 +34,21 @@ pairs = [
     ],
     [
         r"(.*) (connect|search) to Wikipedia (.*)",
-        [lambda matches: wikipedia.summary(matches[2]) if wikipedia.search(matches[2]) else "No results found.",]
+        [lambda matches: wikipedia_summary(matches[2]) if wikipedia.search(matches[2]) else "No results found.",]
     ],
     [
         r"quit",
         ["Goodbye! If you have more questions, feel free to ask later.",]
     ],
 ]
+
+def wikipedia_summary(topic):
+    try:
+        return wikipedia.summary(topic)
+    except wikipedia.exceptions.DisambiguationError as e:
+        return wikipedia.summary(e.options[0])
+    except wikipedia.exceptions.PageError:
+        return "No results found for that topic."
 
 def main():
     print("Hello! I'm Felicia, a female AI chatbot. How can I assist you today?")
@@ -50,3 +58,4 @@ def main():
         response = chat.respond(user_input)
         print("Felicia >>", response)
         os.system(f"termux-tts-speak '{response}'")
+

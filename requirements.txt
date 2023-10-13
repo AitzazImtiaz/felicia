@@ -1,2 +1,1 @@
-chatterbot
-wikipedia
+cleverbotfreeapi

@@ -11,10 +11,8 @@ def main():
 
         if ai_response.strip():  # Check if Cleverbot provided a non-empty response
             print("AI 1 >> " + ai_response)
+            os.system(f"espeak '{ai_response}'")  # Use espeak for AI 1's response
             user_input = cleverbotfreeapi.cleverbot(ai_response, session=session)
-            print("You >> " + user_input)
-            fout = f"termux-tts-speak '{user_input}'"
-            os.system(fout)
         else:
             print("AI 1 >> Cleverbot did not respond.")
             break

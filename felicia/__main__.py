@@ -3,20 +3,19 @@ import os
 import subprocess
 
 def main():
-    first_inp = "Hi"  # Initial input
+    user_input = "Hi"  # Initial input from the user
     session = "Deftera"
     
     while True:
-        print("You >> " + first_inp)
-        out = cleverbotfreeapi.cleverbot(first_inp, session=session)
-        print("AI 1 >> " + out)
+        print("You >> " + user_input)
+        ai_response = cleverbotfreeapi.cleverbot(user_input, session=session)
         
-        if out.strip():  # Check if Cleverbot provided a non-empty response
-            second_inp = out
-            print("AI 2 >> " + second_inp)
-            fout = f"termux-tts-speak '{second_inp}'"
-            os.system(fout)
-            first_inp = second_inp  # Update the input for the next interaction
+        if ai_response.strip():  # Check if Cleverbot provided a non-empty response
+            print("AI 1 >> " + ai_response)
+            user_input = ai_response  # User's response is based on AI 1's reply
         else:
-            print("AI 2 >> Cleverbot did not respond.")
+            print("AI 1 >> Cleverbot did not respond.")
             break
+
+if __name__ == "__main__":
+    main()

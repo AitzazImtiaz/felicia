@@ -3,7 +3,7 @@ import os
 import time
 
 def main():
-    user_input = "Hi"  # Initial input from the user
+    user_input = "Heu! How are you?"  # Initial input from the user
     session = "Deftera"
 
     while True:

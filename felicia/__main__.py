@@ -8,8 +8,10 @@ def main():
 
     while True:
         print("You >> " + user_input)
+        user_input_cleaned = user_input.replace("'", '')  # Remove single quotes
+        os.system(f"termux-tts-speak '{user_input_cleaned}'")  # Use termux-tts-speak for "You"
+        time.sleep(2.5)  # Pause for 2.5 seconds
 
-        # Use the current user input as input for Cleverbot
         ai_response = cleverbotfreeapi.cleverbot(user_input, session=session)
 
         if ai_response.strip():  # Check if Cleverbot provided a non-empty response
@@ -22,8 +24,4 @@ def main():
 
         user_input = ai_response  # Set the response as the next user input
 
-        # Generate a response for "You" based on the user input
-        user_input_cleaned = user_input.replace("'", '')  # Remove single quotes
-        os.system(f"termux-tts-speak '{user_input_cleaned}'")  # Use termux-tts-speak for "You"
-
-        time.sleep(5)  # Pause for 5 seconds
+        time.sleep(2.5)  # Pause for 2.5 seconds
